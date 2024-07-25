@@ -65,8 +65,8 @@ def process_budget_data(film):
         else: 
             film.OriginalBudget, film.USDBudget = int(cleaned), int(cleaned)
             
-    elif film.Budget.startswith("£"):
-        cleaned = film.Budget.split(' ')[0].replace("£", "")
+    elif film.Budget.startswith("£") or film.Budget.startswith("₤"):
+        cleaned = film.Budget.split(' ')[0].replace("£", "").replace("₤", "")
         if 'million' in film.Budget:
             film.OriginalBudget = to_million(cleaned)
             film.USDBudget = pounds_to_dollars(to_million(cleaned))
