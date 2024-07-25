@@ -26,7 +26,7 @@ def retrieve_data(endpoint: str = 'http://oscars.yipitdata.com/') -> list:
     
     return filtered_data
 
-def get_budget_from_api(detail_url: str):
+def get_budget_from_api(detail_url: str) -> str:
     try:
         response = requests.get(f'{detail_url}')
         if 'Budget' in response.json(): 
@@ -38,7 +38,7 @@ def get_budget_from_api(detail_url: str):
     
     return budget
 
-def to_million(cleaned: str):
+def to_million(cleaned: str) -> int:
     return int(float(cleaned) * 1000000)
 
 def process_budget_data(film):
